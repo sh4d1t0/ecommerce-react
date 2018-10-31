@@ -1,0 +1,39 @@
+[ignore]
+.*/tests/.*
+.*/dist/.*
+.*/node_modules/jsonlint/test/.*
+
+[include]
+
+[libs]
+.*/flow-typed/.*
+
+[lints]
+
+[options]
+emoji=true
+module.file_ext=.js
+module.file_ext=.jsx
+module.file_ext=.json
+module.file_ext=.css
+module.file_ext=.scss
+module.file_ext=.less
+module.name_mapper.extension='css' -> 'empty/object'
+module.name_mapper.extension='scss' -> 'empty/object'
+module.name_mapper.extension='less' -> 'empty/object'
+module.system.node.resolve_dirname=node_modules
+module.system.node.resolve_dirname=src
+module.name_mapper='^App' ->'<PROJECT_ROOT>/src/app'
+module.name_mapper='^Components' ->'<PROJECT_ROOT>/src/app/components'
+module.name_mapper='^Features' ->'<PROJECT_ROOT>/src/app/features'
+module.name_mapper='^Views' ->'<PROJECT_ROOT>/src/app/views'
+module.name_mapper='^Shared' ->'<PROJECT_ROOT>/src/shared'
+module.name_mapper='^SharedReducers' ->'<PROJECT_ROOT>/src/shared/reducers'
+module.name_mapper='^SharedUtils' ->'<PROJECT_ROOT>/src/shared/utils'
+module.name_mapper='^SharedStyles' ->'<PROJECT_ROOT>/src/shared/styles'
+module.name_mapper='^Server' ->'<PROJECT_ROOT>/src/server'
+
+[strict]
+
+[version]
+>=0.72.0
