@@ -42,9 +42,12 @@
   },
   "homepage": "https://github.com/sh4d1t0/ecommerce-react#readme",
   "dependencies": {
+    "@material-ui/core": "^3.3.2",
+    "@material-ui/icons": "^3.0.1",
     "autoprefixer": "^9.3.1",
     "browserslist": "^4.3.4",
     "express": "^4.16.4",
+    "isomorphic-fetch": "^2.2.1",
     "node-object-hash": "^1.4.1",
     "node-time-ago": "^1.0.0",
     "onchange": "^5.0.2",

@@ -1,0 +1,7 @@
+/** @prettier */
+@import './vars';
+@import './global-mixins';
+
+body {
+  background-color: $gray;
+}
