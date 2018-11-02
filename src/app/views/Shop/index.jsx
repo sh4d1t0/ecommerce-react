@@ -141,6 +141,7 @@ class Shop extends Component<Props, State> {
             </div>
           </Toolbar>
         </AppBar>
+
         <Products products={products} />
       </Fragment>
     )

@@ -2,6 +2,10 @@
 // dependencies
 import React from 'react'
 import timeAgo from 'node-time-ago'
+import Button from '@material-ui/core/Button'
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart'
+import Grid from '@material-ui/core/Grid'
+import { withStyles } from '@material-ui/core/styles'
 // utils
 import isFirstRender from 'SharedUtils/data'
 // styles
@@ -13,37 +17,63 @@ type Props = {
     title: string,
     author: string,
     date: string
-  }>
+  }>,
+  classes: any
 }
 
+const style = theme => ({
+  button: {
+    margin: theme.spacing.unit
+  },
+  leftIcon: {
+    marginRight: theme.spacing.unit
+  }
+})
+
 function Products(props: Props) {
-  const { products } = props
+  const { classes, products } = props
 
   if (isFirstRender(products)) {
     return null
   }
 
   return (
-    <div className={styles.products}>
-      <div className={styles.header}>
-        <h1>Productos</h1>
-      </div>
-
+    <Grid container spacing={24}>
       {products &&
         products.map(product => (
-          <div key={product.id} className={styles.products}>
-            <p>
-              {product.id}
-              {' - '}
-              {product.title}
-              {' by '}
-              {product.author}
-            </p>
-            <p>{timeAgo(product.date)}</p>
-          </div>
+          <Grid item xs={6} md={3}>
+            <div key={product.id} className={styles.products}>
+              <p>{product.title}</p>
+              <p>
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  width={200}
+                  height={150}
+                />
+              </p>
+              <p>{product.price}</p>
+              <p>
+                {product.author}
+                {' - '}
+                {timeAgo(product.date)}
+              </p>
+              <p>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className={classes.button}
+                  disabled={product.inventory > 0 ? '' : 'disabled'}
+                >
+                  <AddShoppingCartIcon className={classes.rightIcon} />
+                  {product.inventory > 0 ? 'Agregar al carrito' : 'Vendido'}
+                </Button>
+              </p>
+            </div>
+          </Grid>
         ))}
-    </div>
+    </Grid>
   )
 }
 
-export default Products
+export default withStyles(style)(Products)
