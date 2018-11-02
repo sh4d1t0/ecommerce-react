@@ -1,5 +1,6 @@
 // dependencies
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const Autoprefixer = require('autoprefixer')
 // enviroment
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
@@ -60,9 +61,8 @@ function rules(type) {
             loader: 'postcss-loader',
             options: {
               ident: 'postcss',
-              plugins: () => [
-                // eslint-disable-next-line
-                require('autoprefixer')({
+              plugins: [
+                new Autoprefixer({
                   grid: true
                 })
               ]
@@ -84,6 +84,17 @@ function rules(type) {
               sourceMap: false
             }
           },
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: [
+                new Autoprefixer({
+                  grid: true
+                })
+              ]
+            }
+          },
           'sass-loader'
         ]
       },
@@ -99,6 +110,17 @@ function rules(type) {
               localIdentName: '[name]_[local]',
               importLoaders: 2,
               sourceMap: false
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: [
+                new Autoprefixer({
+                  grid: true
+                })
+              ]
             }
           },
           'less-loader'
@@ -125,9 +147,8 @@ function rules(type) {
             loader: 'postcss-loader',
             options: {
               ident: 'postcss',
-              plugins: () => [
-                // eslint-disable-next-line
-                require('autoprefixer')({
+              plugins: [
+                new Autoprefixer({
                   grid: true
                 })
               ]
@@ -149,6 +170,17 @@ function rules(type) {
               sourceMap: false
             }
           },
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: [
+                new Autoprefixer({
+                  grid: true
+                })
+              ]
+            }
+          },
           'sass-loader'
         ]
       },
@@ -164,6 +196,17 @@ function rules(type) {
               localIdentName: '[name]_[local]',
               importLoaders: 2,
               sourceMap: false
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: [
+                new Autoprefixer({
+                  grid: true
+                })
+              ]
             }
           },
           'less-loader'

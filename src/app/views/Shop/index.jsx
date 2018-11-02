@@ -35,9 +35,6 @@ type State = {
 }
 
 const styles = theme => ({
-  root: {
-    width: '100%'
-  },
   grow: {
     flexGrow: 1
   },
