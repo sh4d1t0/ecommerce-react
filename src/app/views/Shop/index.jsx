@@ -10,7 +10,10 @@ import InputBase from '@material-ui/core/InputBase'
 import { fade } from '@material-ui/core/styles/colorManipulator'
 import { withStyles } from '@material-ui/core/styles'
 import MenuIcon from '@material-ui/icons/Menu'
+import MenuItem from '@material-ui/core/MenuItem'
+import Menu from '@material-ui/core/Menu'
 import SearchIcon from '@material-ui/icons/Search'
+import AccountCircle from '@material-ui/icons/AccountCircle'
 // Components
 import Products from 'Components/Products'
 // Actions
@@ -31,9 +34,10 @@ type Props = {
   dispatch: Dispatch
 }
 type State = {
-  /** *** */
+  anchorEl: ?string
 }
 
+// Material-UI JSStyles
 const styles = theme => ({
   grow: {
     flexGrow: 1
@@ -96,6 +100,10 @@ class Shop extends Component<Props, State> {
     return fetchProducts(fetchingFrom)
   }
 
+  state = {
+    anchorEl: null
+  }
+
   componentDidMount() {
     const { products, dispatch } = this.props
 
@@ -104,8 +112,18 @@ class Shop extends Component<Props, State> {
     }
   }
 
+  handleMenu = event => {
+    this.setState({ anchorEl: event.currentTarget })
+  }
+
+  handleClose = () => {
+    this.setState({ anchorEl: null })
+  }
+
   render(): any {
     const { classes, products } = this.props
+    const { anchorEl } = this.state
+    const open = Boolean(anchorEl)
 
     return (
       <Fragment>
@@ -138,6 +156,33 @@ class Shop extends Component<Props, State> {
                   input: classes.inputInput
                 }}
               />
+            </div>
+            <div>
+              <IconButton
+                aria-owns={open ? 'menu-appbar' : undefined}
+                aria-haspopup="true"
+                onClick={this.handleMenu}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right'
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right'
+                }}
+                open={open}
+                onClose={this.handleClose}
+              >
+                <MenuItem onClick={this.handleClose}>Perfil</MenuItem>
+                <MenuItem onClick={this.handleClose}>Mi carrito</MenuItem>
+              </Menu>
             </div>
           </Toolbar>
         </AppBar>

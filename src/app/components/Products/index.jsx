@@ -15,12 +15,16 @@ type Props = {
   products: Array<{
     id: number,
     title: string,
+    image: string,
+    price: number,
+    inventory: number,
     author: string,
     date: string
   }>,
   classes: any
 }
 
+// Material-UI JSStyles
 const style = theme => ({
   button: {
     margin: theme.spacing.unit

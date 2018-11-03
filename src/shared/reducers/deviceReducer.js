@@ -1,5 +1,5 @@
 // @flow
-export default function deviceReducer(state: { isMobile?: void } = {}): any {
+export default function deviceReducer(state: { isMobile?: any } = {}): any {
   let isMobile = false
 
   if (state.isMobile === 'true') {
